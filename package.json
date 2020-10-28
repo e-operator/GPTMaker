@@ -1,0 +1,14 @@
+{
+  "name": "gptmaker",
+  "version": "0.0.1",
+  "description": "Electron GUI toolkit for finetuning GPT-2 and generating unconditional/interactive samples",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "e-operator",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  }
+}
