@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Create New Model - GPTMaker</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <p>GPTMaker - Create New Model</p>
+        <h1>Create a new GPT-2 model</h1>
+        <hr>
+        <br>
+        <h3>Choose model size</h3>
+        <p>[!!] Larger models require more system memory</p>
+        <div class="model-size-radio">
+            <input type="radio" id="opt-117M" name="opt-model-size" value="117M">
+            <label for="opt-117M">Small (117M) [Recommended]</label>
+
+            <input type="radio" id="opt-355M" name="opt-model-size" value="355M">
+            <label for="opt-355M">Medium (355M)</label>
+
+            <input type="radio" id="opt-774M" name="opt-model-size" value="774M">
+            <label for="opt-774M">Large (774M)</label>
+
+            <input type="radio" id="opt-1558M" name="opt-model-size" value="1558M">
+            <label for="opt-1558M">Huge (1558M)</label>
+        </div>
+
+    </body>
+    <script>
+        require('./createNewModel.js');
+    </script>
+</html>
