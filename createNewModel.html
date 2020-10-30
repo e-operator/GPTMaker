@@ -8,8 +8,8 @@
         <h1>Create a new GPT-2 model</h1>
         <hr>
         <br>
-        <h3>Choose model size</h3>
-        <p>[!!] Larger models require more system memory</p>
+        <h2>Choose model size</h2>
+        <p style="color:red">[!!] Larger models require more system memory [!!]</p>
         <div class="model-size-radio">
             <input type="radio" id="opt-117M" name="opt-model-size" value="117M">
             <label for="opt-117M">Small (117M) [Recommended]</label>
@@ -23,7 +23,15 @@
             <input type="radio" id="opt-1558M" name="opt-model-size" value="1558M">
             <label for="opt-1558M">Huge (1558M)</label>
         </div>
-
+        <br>
+        <h2>Name the model</h2>
+        <input type="text" id="opt-model-name" class="model-name-input">
+        <br>
+        <br>
+        <div id="message-area">
+        </div>
+        <br>
+        <button class="model-create-button" id="create-button">Create Model</button>
     </body>
     <script>
         require('./createNewModel.js');
