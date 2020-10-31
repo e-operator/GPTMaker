@@ -21,6 +21,7 @@ createButton.addEventListener('click', () => {
                 {
                     modelSize = modelSizeRadio[i].value;
                     console.log("Continuing with size " + modelSize + " and name " + modelName);
+                    createButton.disabled = true;
                     ipcRenderer.send("create-model", modelName, modelSize);
                 }
             }
@@ -29,4 +30,8 @@ createButton.addEventListener('click', () => {
         }
         
     }
+});
+
+ipcRenderer.on('model-creation-success', () => {
+    window.location = "trainModel.html";
 });

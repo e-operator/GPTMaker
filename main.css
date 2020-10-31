@@ -8,7 +8,61 @@ hr {
     border-top: 2px solid #39CC40;
 }
 
-.model-name-input {
+.model-size-select {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.model-size-select select {
+    color: #39CC40;
+    border: 4px solid #39CC40;
+    border-radius: 8px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.advanced-settings-toggle {
+    background-color: transparent;
+    color: #39CC40;
+    cursor: pointer;
+    padding: .4em 1.2em;
+    width: 100%;
+    border: 4px solid #39CC40;
+    border-radius: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
+}
+
+.advanced-settings-toggle:hover {
+    border-color: #154D18;
+}
+
+.advanced-settings-content {
+    padding: .4em 1.2em;
+    display: none;
+    overflow: hidden;
+}
+
+.inline-input {
+    padding: .4em 1.2em;
+    color: #39CC40;
+    background-color: transparent;
+    border: 4px solid #39CC40;
+    border-radius: 8px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+}
+
+.inline-div {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.simple-input {
     display: inline-block;
     width: 100%;
     padding: .4em 1.2em;
@@ -38,12 +92,36 @@ hr {
     border-color: #39cc40;
 }
 
+.next-button {
+    align-self: flex-start;
+    border: 4px solid #39CC40;
+    border-color: #39CC40;
+    border-radius: 8px;
+    padding: .4em 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.8em;
+    color: #39CC40;
+    background-color: transparent;
+    width: 100%;
+}
+
+.next-button:active {
+    border-color: #154D18;
+}
+
+.next-button:disabled {
+    border-color: #154D18;
+    color: #154D18;
+    pointer-events: none;
+}
+
 .model-create-button {
     align-self: flex-start;
     border: 4px solid #39CC40;
     border-color: #39CC40;
     border-radius: 8px;
     padding: .4em 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2em;
     color: #39CC40;
     background-color: transparent;

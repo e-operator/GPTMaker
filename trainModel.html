@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <title>Train Model - GPTMaker</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <p>GPTMaker - Train Model</p>
+        <h1>Train GPT-2</h1>
+        <hr>
+        <br>
+        <p>Enter name of model to train</p>
+        <input type="text" id="opt-model-name" name="opt-model-name" class="simple-input">
+        <br>
+        <p>Select size of model</p>
+        <div class="model-size-select">
+            <select id="opt-model-size">
+                <option value="0">Select model size...</option>
+                <option value="117M">Small (117M)</option>
+                <option value="355M">Medium (355M)</option>
+                <option value="774M">Large (774M)</option>
+                <option value="1558M">Huge (1558M)</option>
+            </select>
+        </div>
+        <br>
+        <br>
+        <div class="inline-div">
+        <p>Create⠀</p><input type="text" id="opt-sample-amount" class="inline-input"><p>⠀samples every⠀</p><input type="text" id="opt-sample-rate" class="inline-input"><p>⠀cycles.</p>
+        </div>
+        <br>
+        <button type="button" id="advanced-settings-toggle" class="advanced-settings-toggle">Advanced Settings</button>
+        <div id="advanced-settings-content" class="advanced-settings-content">
+            <h2>Advanced Settings</h2>
+            <h4>Default settings are fine, change if you know what they mean.</h4>
+            <p>Batch size</p>
+            <input type="text" id="opt-batch-size" name="opt-batch-size" class="simple-input">
+            <br>
+            <p>Learning rate</p>
+            <input type="text" id="opt-learning-rate" name="opt-learning-rate" class="simple-input">
+            <br>
+            <p>Accumulate gradients</p>
+            <input type="text" id="opt-accumulate-gradients" name="opt-accumulate-gradients" class="simple-input">
+            <br>
+            <p>Memory saving gradients</p>
+            <input type="text" id="opt-memory-saving-gradients" name="opt-memory-saving-gradients" class="simple-input">
+            <br>
+            <p>Optimizer</p>
+            <input type="text" id="opt-optimizer" name="opt-optimizer" class="simple-input">
+            <br>
+            <p>Top K</p>
+            <input type="text" id="opt-top-k" name="opt-top-k" class="simple-input">
+            <br>
+            <p>Top P</p>
+            <input type="text" id="opt-top-p" name="opt-top-p" class="simple-input">
+            <br>
+            <p>Sample length</p>
+            <input type="text" id="opt-sample-length" name="opt-sample-length" class="simple-input">
+            <br>
+        </div>
+        <br>
+        <br>
+        <button id="next-button" class="next-button" style="width: 100%">Next</button>
+    </body>
+    <script>
+        require('./trainModel.js');
+    </script>
+</html>
