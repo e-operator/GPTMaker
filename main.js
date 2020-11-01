@@ -1,4 +1,4 @@
-const { ipcMain, app, dialog, BrowserWindow } = require('electron');
+const { ipcMain, app, dialog, BrowserWindow, ipcRenderer } = require('electron');
 const fs = require('fs');
 
 
@@ -27,6 +27,10 @@ ipcMain.on('create-model', (event, modelName, modelSize) => {
     };
 
     var skipDL = false;
+
+    if(!fs.existsSync("./usermodel/")){
+        fs.mkdirSync("./usermodel/");
+    }
 
     if(!fs.existsSync("./usermodel/" + modelName + "/")){
         fs.mkdirSync("./usermodel/" + modelName + "/");
@@ -105,7 +109,9 @@ ipcMain.on('create-model', (event, modelName, modelSize) => {
         downloaderWin.loadFile('downloaderProgress.html');
 
         modelDownloader.stderr.on('data', function(data) {
-            downloaderWin.webContents.send('download-progress', data);
+            console.log(data.match(/\d+(?=%)/))
+            encodingProgress = data.match(/\d+(?=%)/);
+            downloaderWin.webContents.send('download-progress', encodingProgress);
         });
 
         modelDownloader.on('exit', () => {
@@ -145,16 +151,33 @@ ipcMain.on('store-training-information', (event, tModelName, tModelSize, tSample
     event.sender.send('training-information-store-success');
 });
 
-ipcMain.on('new-model', (event) => {
-    //dialog.showErrorBox("!","You have clicked the \"Create New Model\" button.");
+ipcMain.on('request-encoded-dataset', (event) => {
+    dialog.showOpenDialog().then(result => {
+        if(!fs.existsSync('./datasets/')){
+            fs.mkdirSync('./datasets/');
+        }
+        fs.copyFileSync(result.filePaths[0], './datasets/tmp.npz');
+        event.sender.send('reply-encoded-dataset');
+    });
 });
 
-ipcMain.on('train-old-model', (event) => {
-    //dialog.showErrorBox("!","You have clicked the \"Train Existing Model\" button.");
-});
+ipcMain.on('request-raw-dataset', (event) => {
+    dialog.showOpenDialog().then(result => {
+        let encoderOpts = {
+            "cwd":"./"
+        };
+        if(!fs.existsSync('./datasets/')){
+            fs.mkdirSync('./datasets/');
+        }
+        var textEncoderProcess = require('child_process').exec('text-encode.exe --model_name ' + currentModelSize + ' ' + result.filePaths[0] + ' ./datasets/tmp.npz');
 
-ipcMain.on('prompt-model', (event) => {
-    //dialog.showErrorBox("!","You have clicked the \"Generate Samples from Existing Model\" button.");
+        textEncoderProcess.stdout.pipe(process.stdout);
+        textEncoderProcess.stderr.pipe(process.stdout);
+
+        textEncoderProcess.on('exit', () => {
+            event.sender.send('encoding-finished');
+        });
+    });
 });
 
 app.whenReady().then(startMain)

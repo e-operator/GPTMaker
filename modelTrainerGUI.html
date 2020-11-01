@@ -5,7 +5,10 @@
     </head>
     <body>
         <p>GPTMaker - Train Model</p>
-        <h1>Training {{MODELNAME}}</h1>
+        <h1 id="training-title">Training {{MODELNAME}}</h1>
+        <hr>
+        <br>
+        <textarea id="training-output" style="background-color: black;color: white;height: 80%;width: 40%;"readonly>Welcome to GPTMaker Trainer!</textarea>
     </body>
     <script>
         require('./modelTrainerGUI.js');

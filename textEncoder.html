@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Prepare Training Data - GPTMaker</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <p>GPTMaker - Prepare Training Data</p>
+        <h1>Prepare your training data</h1>
+        <hr>
+        <br>
+        <button id="skip-encoding-button" class="simple-button">I have encoded training data</button>
+        <p>Select this if you already have an pre-encoded .NPZ file</p>
+        <br>
+        <br>
+        <button id="encode-data-button" class="simple-button">I have training data that needs to be encoded</button>
+        <p>Select this if you have a text file or a folder of text files to use as training data</p>
+        <p>Your data will be encoded into a .NPZ file</p>
+        <br>
+        <br>
+        <center>
+        <div id="preloader" class="preloader"></div>
+        <p id="preloader-status" style="display: none;">Encoding...</p>
+        </center>
+    </body>
+    <script>
+        require('./textEncoder.js');
+    </script>
+</html>

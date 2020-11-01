@@ -50,5 +50,5 @@ nextButton.addEventListener('click', () => {
 });
 
 ipcRenderer.on('training-information-store-success', (event) => {
-    window.location = "./modelTrainerGUI.html";
+    window.location = "textEncoder.html";
 });
