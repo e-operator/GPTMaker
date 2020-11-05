@@ -128,7 +128,7 @@ ipcMain.on('create-model', (event, modelName, modelSize) => {
 });
 
 ipcMain.on('request-current-model', (event) => {
-    event.sender.send('reply-current-model', currentModelName, currentModelSize);
+    event.sender.send('reply-current-model', currentModelName, currentModelSize, currentSampleAmount, currentSampleRate, currentBatchSize, currentLearningRate, currentAccumulateGradients, currentOptimizer, currentTopK, currentTopP, currentSampleLength);
 });
 
 ipcMain.on('clear-current-model', (event) => {
@@ -177,6 +177,20 @@ ipcMain.on('request-raw-dataset', (event) => {
         textEncoderProcess.on('exit', () => {
             event.sender.send('encoding-finished');
         });
+    });
+});
+
+ipcMain.on('train-start', (event) => {
+    var trainer = require('child_process').exec('model-train.exe --model_name ' + currentModelSize + " --dataset ./datasets/tmp.npz");
+    trainer.stdout.pipe(process.stdout);
+    trainer.stderr.pipe(process.stdout);
+
+    trainer.stdout.on('data', function(data) {
+        event.sender.send('training-progress', data);
+    });
+
+    trainer.stderr.on('data', function(data) {
+        
     });
 });
 
